@@ -2,57 +2,59 @@
 #all {
     padding: 10px;
     background: #e6d4d4;
-    display: grid;
-    grid-template-areas: 'header header header header header header '
-               'nav nav nav nav nav nav'
-               'section section section section section aside'
-               'footer footer footer footer footer footer ';
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
 }
 header {
     text-align: center;
-    grid-area: header;
     height: 150px;
     background: white;
 }
 nav {
-    padding-left: 10px;
+    padding: 10px;
     background: black;
     color: white;
-    grid-area: nav;
-    min-height: 50px;
+    margin-bottom: 10px;
+    min-height: 30px;
+    line-height: 30px;
 }
-nav ul li { width: 50px; float: left; list-style: none;}
-nav  #lastlink {float: right;}
-nav a {color: white; text-decoration: none;}
+
+nav a {color: white; text-decoration: none; margin-left: 10px;}
+a:nth-last-of-type(4) {float: right; margin-right: 10px;}
+#container {
+    display: flex;
+    flex-direction: row;
+}
 section {
+    flex-grow: 6;
     background: #e6d4d4;
-    grid-area: section;
 }
 img {background: gray; width: 100%; height: 50%;}
 section .left { background: white; height: 300px; padding: 20px; margin-bottom: 20px;}
 aside {
+    flex-grow: 1;
     background: #e6d4d4;
-    grid-area: aside;
+    margin-left: 20px;
 }
 aside > div {background: white; padding: 20px; margin-bottom: 20px;}
 footer {
-    background: rgb(170, 161, 161);
+    background: #aaa1a1;
     text-align: center;
-    grid-area: footer;
     height: 50px;
     line-height: 50px;
 }
 
 @media screen and (max-width:768px) {
-    #all {
-        grid-template-areas: 'header' 'nav' 'section' 'aside' 'footer';
+     #container {
+        flex-direction: column;
     }
+    aside {margin: 0px;}
 }
 @media screen and (max-width:501px) {
     #all {
         grid-template-areas: 'header' 'nav' 'section' 'aside' 'footer';
     }
-    nav ul li {float: none; text-align: center; padding: 10px;margin: auto;}
+    nav ul li { text-align: center; padding: 10px;margin: auto;}
+    nav ul {flex-direction: column;}
     nav #lastlink {float: none;}
 }
